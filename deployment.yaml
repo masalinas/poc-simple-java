@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-simple-java
+  labels:
+    app: poc-simple-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poc-simple-java
+  template:
+    metadata:
+      labels:
+        app: poc-simple-java
+    spec:
+      containers:
+      - name: poc-simple-java
+        image: masalinas/poc-simple-java
+        ports:
+        - containerPort: 8080
+       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poc-simple-java-service
+  labels:
+    app: poc-simple-java
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 32121
+  selector:
+    app: poc-simple-java

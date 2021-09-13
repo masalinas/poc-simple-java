@@ -2,10 +2,16 @@ pipeline {
     agent any
     
     stages {
-        stage("Deploy") {            
+        stage("Checkout") {
             steps {
-                sh ""
+                git branch: "master", url: "https://github.com/masalinas/poc-simple-java.git"
             }
-        }                
+        }
+
+        stage('Deploying into k8s'){
+            steps{
+                sh 'kubectl apply -f deployment.yml'
+            }
+        }              
     }
 }
