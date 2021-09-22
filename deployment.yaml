@@ -16,10 +16,9 @@ spec:
     spec:
       containers:
       - name: poc-simple-java
-        image: masalinas/poc-simple-java
+        image: {{DOCKER_IMAGE}}
         ports:
         - containerPort: 8080
-       
 ---
 apiVersion: v1
 kind: Service
