@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: poc-simple-java
-        image: masalinas/poc-simple-java
+        image: masalinas/poc-simple-java:30
         ports:
         - containerPort: 8080
        
