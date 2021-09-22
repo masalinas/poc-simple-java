@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: poc-simple-java
+  name: poc-simple-java-deployment
   labels:
     app: poc-simple-java
 spec:
