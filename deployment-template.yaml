@@ -1,22 +1,21 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: poc-simple-java-deployment
-labels:
-  app: poc-simple-java
-spec:
-replicas: 1
-selector:
-  matchLabels:
+  name: poc-simple-java-deployment
+  labels:
     app: poc-simple-java
-template:
-  metadata:
-    labels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
       app: poc-simple-java
-  spec:
-    containers:
-    - name: poc-simple-java
+  template:
+    metadata:
+      labels:
+        app: poc-simple-java
+    spec:
+      containers:
+      - name: poc-simple-java
       image: {{DOCKER_IMAGE}}
       ports:
       - containerPort: 8080
@@ -24,15 +23,15 @@ template:
 apiVersion: v1
 kind: Service
 metadata:
-name: poc-simple-java-service
-labels:
-  app: poc-simple-java
+  name: poc-simple-java-service
+  labels:
+    app: poc-simple-java
 spec:
-type: NodePort
-ports:
-- port: 8080
-  protocol: TCP
-  targetPort: 8080
-  nodePort: 32121
-selector:
-  app: poc-simple-java
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 32121
+  selector:
+    app: poc-simple-java
