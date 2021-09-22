@@ -19,19 +19,3 @@ spec:
         image: {{DOCKER_IMAGE}}
         ports:
         - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: poc-simple-java-service
-  labels:
-    app: poc-simple-java
-spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: 8080
-    nodePort: 32121
-  selector:
-    app: poc-simple-java
