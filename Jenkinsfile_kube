@@ -14,7 +14,7 @@ podTemplate(
                     git branch: "master", url: "https://github.com/masalinas/poc-simple-java.git"
                 }
 
-	     	    stage('Compile') {
+	            stage('Compile') {
                     sh "mvn clean install -DskipTests"
                 }
 
@@ -47,7 +47,7 @@ podTemplate(
                 steps {
                     sh 'cat deployment-template.yaml | sed "s|{{DOCKER_IMAGE}}|masalinasgancedo/poc-simple-java:$BUILD_NUMBER|" > deployment.yaml'
 
-                    withCredentials([kubeconfigFile(credentialsId: 'kube-config', variable: 'KUBECONFIG')]) {l
+                    withCredentials([kubeconfigFile(credentialsId: 'kube-config', variable: 'KUBECONFIG')]) {
                         sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.22.1/bin/linux/amd64/kubectl"'
                         sh 'chmod u+x ./kubectl'
 
