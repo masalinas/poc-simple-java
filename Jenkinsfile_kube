@@ -45,7 +45,7 @@ podTemplate(
 
             stage("Deploy image") {
                 steps {
-                    sh 'cat deployment-template.yaml | sed "s|{{DOCKER_IMAGE}}|masalinasgancedo/poc-simple-java:43|" > deployment.yaml'
+                    sh 'cat deployment-template.yaml | sed "s|{{DOCKER_IMAGE}}|masalinasgancedo/poc-simple-java:$BUILD_NUMBER|" > deployment.yaml'
 
                     withCredentials([kubeconfigFile(credentialsId: 'kube-config', variable: 'KUBECONFIG')]) {l
                         sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.22.1/bin/linux/amd64/kubectl"'
