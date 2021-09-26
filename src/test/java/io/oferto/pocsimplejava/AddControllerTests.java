@@ -29,6 +29,6 @@ public class AddControllerTests {
 		this.mockMvc.perform(get("/add").params(params))
 		.andDo(print())
 		.andExpect(status().isOk())
-		.andExpect(jsonPath("$.result").value("1"));
+		.andExpect(jsonPath("$.result").value("4"));
 	}
 }
