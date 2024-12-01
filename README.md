@@ -1,44 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	
-	<groupId>io.oferto</groupId>
-	<artifactId>poc-java-simple</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>poc-simple-java</name>	
-	<description>Simple Java PoC</description>
-	
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+# Description 
+Simple Java PoC
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+# Compile docker image
+```
+docker build -t poc-simple-java:0.0.1-SNAPSHOT .
+```
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-</project>
+# Run image in local mode
+```
+docker run -it --rm --name poc-simple-java -p 8080:8080 poc-simple-java:0.0.1-SNAPSHOT
+```
+
+# Check microservice in local mode
+```
+curl http://localhost:8080/greeting?name=Miguel
+```
+
+# Publish on docker hub
+- You must have a DockerHub account (ID Account and password)
+- You must create a repository in your account
+- Login in your account from docker
+
+```
+docker login
+```
+
+- Publish your image
+
+```
+docker tag poc-simple-java:0.0.1-SNAPSHOT ofertoio/poc-simple-java:0.0.1-SNAPSHOT
+docker push ofertoio/poc-simple-java:0.0.1-SNAPSHOT
+```
+
+# Test pod in kubernetes
+```
+kubectl --namespace default port-forward svc/poc-simple-java-service 8088:8080
+```
+
+navigate to: http://localhost:8088/greeting
