@@ -1,5 +1,5 @@
 # Description 
-Simple Java PoC v1.1.0 
+Simple Java PoC v1.2.0 
 
 # Compile docker image
 ```
