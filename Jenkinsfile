@@ -23,8 +23,6 @@ podTemplate(
 
                 stage("Run unit tests") {
                     sh "mvn test -Punit"
-
-                    //junit "**/TEST-*.xml"
                 }
 
                 stage("Run integration tests") {

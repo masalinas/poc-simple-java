@@ -21,7 +21,7 @@ public class AddControllerTests {
 	private MockMvc mockMvc;
 	
 	@Test
-	public void affIntegers() throws Exception {
+	public void addIntegers() throws Exception {
 		 MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		 params.add("a", "2");
 		 params.add("b", "2");

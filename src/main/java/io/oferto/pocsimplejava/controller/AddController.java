@@ -9,7 +9,7 @@ import io.oferto.pocsimplejava.domain.Result;
 @RestController
 public class AddController {
 	@GetMapping("/add")
-	public Result add(@RequestParam(value = "a") int a, @RequestParam(value = "b") int b) {
+	public Result add(@RequestParam int a, @RequestParam int b) {
         int sum = a + b;
         
         return new Result(sum);

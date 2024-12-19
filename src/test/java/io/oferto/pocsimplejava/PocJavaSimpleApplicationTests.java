@@ -9,5 +9,4 @@ class PocJavaSimpleApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
